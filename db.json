@@ -1,0 +1,199 @@
+{
+  "columns": [
+    {
+      "id": "col-backlog",
+      "title": "Backlog",
+      "order": 1
+    },
+    {
+      "id": "col-todo",
+      "title": "To Do",
+      "order": 2
+    },
+    {
+      "id": "col-progress",
+      "title": "In Progress",
+      "order": 3
+    },
+    {
+      "id": "col-code-review",
+      "title": "Code Review",
+      "order": 4
+    },
+    {
+      "id": "col-done",
+      "title": "Done",
+      "order": 5
+    }
+  ],
+  "issues": [
+    {
+      "id": "issue-1",
+      "title": "Design empty column state",
+      "description": "Create a clean empty state for columns with no issues, including a short message and add button.",
+      "assignee": "Yechiel",
+      "status": "col-todo",
+      "priority": "medium"
+    },
+    {
+      "id": "issue-2",
+      "title": "Add column delete flow",
+      "description": "Allow users to delete a column after confirmation, and decide how to handle issues inside",
+      "assignee": "Noa",
+      "status": "col-backlog",
+      "priority": "high"
+    },
+    {
+      "id": "issue-3",
+      "title": "Improve issue details modal",
+      "description": "When clicking an issue card, open a dialog that shows title, description, assignee, status, and priority.",
+      "assignee": "Noa",
+      "status": "col-backlog",
+      "priority": "medium",
+      "createdAt": "2026-05-04T08:20:00.000Z"
+    },
+    {
+      "id": "issue-4",
+      "title": "Add validation messages",
+      "description": "Show helper text when required fields are missing in the issue dialog.",
+      "assignee": "Eli",
+      "status": "col-backlog",
+      "priority": "medium",
+      "createdAt": "2026-05-04T08:30:00.000Z"
+    },
+    {
+      "id": "issue-5",
+      "title": "Fix login error on mobile",
+      "description": "Users report that the login form layout breaks on small mobile screens.",
+      "assignee": "Dana",
+      "status": "col-todo",
+      "priority": "high",
+      "createdAt": "2026-05-04T08:40:00.000Z"
+    },
+    {
+      "id": "issue-6",
+      "title": "Add search by assignee",
+      "description": "Extend the current search so it filters by title, description, and assignee.",
+      "assignee": "Yechiel",
+      "status": "col-progress",
+      "priority": "low"
+    },
+    {
+      "id": "issue-7",
+      "title": "Improve dark mode contrast",
+      "description": "Adjust issue cards, column backgrounds, and icons so they remain readable in dark mode.",
+      "assignee": "Shira",
+      "status": "col-code-review",
+      "priority": "medium",
+      "createdAt": "2026-05-04T09:00:00.000Z"
+    },
+    {
+      "id": "issue-8",
+      "title": "Add loading skeleton",
+      "description": "Replace the plain loading text with a more polished loading skeleton.",
+      "assignee": "Noa",
+      "status": "col-backlog",
+      "priority": "low",
+      "createdAt": "2026-05-04T09:10:00.000Z"
+    },
+    {
+      "id": "issue-9",
+      "title": "Connect edit issue flow",
+      "description": "Open the issue dialog with existing values and save changes using updateIssue.",
+      "assignee": "Yechiel",
+      "status": "col-done",
+      "priority": "high",
+      "createdAt": "2026-05-04T09:20:00.000Z"
+    },
+    {
+      "id": "issue-10",
+      "title": "Polish drag overlay",
+      "description": "Make the dragged issue preview look consistent and prevent layout jumping during drag.",
+      "assignee": "Dana",
+      "status": "col-progress",
+      "priority": "medium",
+      "createdAt": "2026-05-04T09:30:00.000Z"
+    },
+    {
+      "id": "issue-11",
+      "title": "Refactor App into custom hook",
+      "description": "Move board data and actions from App.tsx into a useBoard hook.",
+      "assignee": "Eli",
+      "status": "col-todo",
+      "priority": "medium",
+      "createdAt": "2026-05-04T09:40:00.000Z"
+    },
+    {
+      "id": "issue-12",
+      "title": "Improve add column dialog",
+      "description": "Add validation, prevent duplicate column titles, and improve the dialog copy.",
+      "assignee": "Shira",
+      "status": "col-progress",
+      "priority": "low",
+      "createdAt": "2026-05-04T09:50:00.000Z"
+    },
+    {
+      "id": "issue-13",
+      "title": "Review API layer",
+      "description": "Verify all HTTP requests are centralized in boardApi.ts and components do not call Axios directly.",
+      "assignee": "Noa",
+      "status": "col-progress",
+      "priority": "high",
+      "createdAt": "2026-05-04T10:00:00.000Z"
+    },
+    {
+      "id": "issue-14",
+      "title": "Review TypeScript models",
+      "description": "Check that Issue, Column, CreateIssueInput, and UpdateIssueInput match the data model.",
+      "assignee": "Yechiel",
+      "status": "col-code-review",
+      "priority": "medium",
+      "createdAt": "2026-05-04T10:10:00.000Z"
+    },
+    {
+      "id": "issue-16",
+      "title": "Review delete confirmation",
+      "description": "Confirm that issues are not deleted immediately and require user confirmation.",
+      "assignee": "Eli",
+      "status": "col-todo",
+      "priority": "low",
+      "createdAt": "2026-05-04T10:30:00.000Z"
+    },
+    {
+      "id": "issue-17",
+      "title": "Set up JSON Server",
+      "description": "Create db.json and expose columns and issues endpoints on port 3001.",
+      "assignee": "Yechiel",
+      "status": "col-code-review",
+      "priority": "high",
+      "createdAt": "2026-05-04T10:40:00.000Z"
+    },
+    {
+      "id": "issue-18",
+      "title": "Create Axios client",
+      "description": "Create a shared Axios instance with baseURL, headers, and timeout.",
+      "assignee": "Dana",
+      "status": "col-done",
+      "priority": "medium",
+      "createdAt": "2026-05-04T10:50:00.000Z"
+    },
+    {
+      "id": "issue-19",
+      "title": "Split board UI into components",
+      "description": "Move issue cards and board columns into separate reusable components.",
+      "assignee": "Noa",
+      "status": "col-done",
+      "priority": "medium",
+      "createdAt": "2026-05-04T11:00:00.000Z"
+    },
+    {
+      "id": "issue-20",
+      "title": "Add dark mode toggle",
+      "description": "Use Zustand and MUI theme provider to switch between light and dark mode.",
+      "assignee": "Shira",
+      "status": "col-done",
+      "priority": "low",
+      "createdAt": "2026-05-04T11:10:00.000Z"
+    }
+  ]
+}
