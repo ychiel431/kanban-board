@@ -1,10 +1,18 @@
 import { useState } from 'react';
 
+export interface UseDeleteEntityReturn<T> {
+  entityToDelete: T | null;
+  isOpen: boolean;
+  openDeleteDialog: (entity: T) => void;
+  closeDeleteDialog: () => void;
+  confirmDelete: () => Promise<void>;
+  isDeleting: boolean;
+}
 // T מייצג את סוג הישות (Issue או Column) - חייב להיות להם id
 export function useDeleteEntity<T extends { id: string }>(
   deleteApiFn: (id: string) => Promise<void>,
   onSuccess: (id: string) => void
-) {
+) : UseDeleteEntityReturn<T> {
   const [entityToDelete, setEntityToDelete] = useState<T | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
 

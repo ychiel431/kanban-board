@@ -137,7 +137,7 @@
       "title": "Review API layer",
       "description": "Verify all HTTP requests are centralized in boardApi.ts and components do not call Axios directly.",
       "assignee": "Noa",
-      "status": "col-progress",
+      "status": "col-code-review",
       "priority": "high",
       "createdAt": "2026-05-04T10:00:00.000Z"
     },
@@ -164,7 +164,7 @@
       "title": "Set up JSON Server",
       "description": "Create db.json and expose columns and issues endpoints on port 3001.",
       "assignee": "Yechiel",
-      "status": "col-code-review",
+      "status": "col-progress",
       "priority": "high",
       "createdAt": "2026-05-04T10:40:00.000Z"
     },
