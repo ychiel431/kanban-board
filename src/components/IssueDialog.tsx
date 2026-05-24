@@ -9,14 +9,14 @@ import {
   MenuItem,
   Stack
 } from "@mui/material";
-import type { CreateIssueInput, Issue, Priority } from "../types";
+import type { CreateIssueInput,UpdateIssueInput, Issue, Priority } from "../types";
 
 interface IssueDialogProps {
   open: boolean;
   initialStatus: string;
   issue?: Issue;
   onClose: () => void;
-  onSubmit: (input: CreateIssueInput, id?: string) => void;
+  onSubmit: (input: CreateIssueInput | UpdateIssueInput) => Promise<void>;
 }
 
 function IssueDialog({
@@ -33,23 +33,26 @@ function IssueDialog({
   const [assignee, setAssignee] = useState(issue?.assignee ?? "");
   const [priority, setPriority] = useState<Priority>(issue?.priority ?? "medium");
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!title.trim() || !description.trim() || !assignee.trim()) {
       return;
     }
 
-    onSubmit(
-      {
-        title: title.trim(),
-        description: description.trim(),
-        assignee: assignee.trim(),
-        status: issue ? issue.status : initialStatus,
-        priority
-      },
-      issue?.id
-    );
+    const input = {
+      title: title.trim(),
+      description: description.trim(),
+      assignee: assignee.trim(),
+      status: issue ? issue.status : initialStatus,
+      priority,
+    };
 
-    onClose();
+    if (issue) {
+      await onSubmit({ id: issue.id, ...input });
+    } else {
+      await onSubmit(input);
+}
+
+    
   };
 
   return (

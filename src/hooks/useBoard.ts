@@ -9,6 +9,12 @@ import type { Column, Issue, CreateIssueInput, UpdateIssueInput } from "../types
 import type { DragStartEvent, DragEndEvent } from "@dnd-kit/core";
 import { useUIStore } from "../store/uiStore";
 
+const PRIORITY_WEIGHT = { high: 1, medium: 2, low: 3 };
+
+function sortByPriority(a: Issue, b: Issue) {
+  return PRIORITY_WEIGHT[a.priority] - PRIORITY_WEIGHT[b.priority];
+}
+
 export function useBoard() {
   const [columns, setColumns] = useState<Column[]>([]);
   const [issues, setIssues] = useState<Issue[]>([]);
@@ -61,6 +67,11 @@ export function useBoard() {
     handleCloseIssueDialog();
   });
 
+  const handleCreateColumn = async (title: string) => {
+    const newColumn = await createColumn(title, columns);
+    setColumns((prev) => [...prev, newColumn]);
+  };
+
   const handleSaveIssue = async (data: CreateIssueInput | UpdateIssueInput) => {
     const isNew = !editingIssue;
     const apiFn = isNew ? createIssue : updateIssue;
@@ -92,19 +103,20 @@ export function useBoard() {
     }
   };
 
-  // אובייקט עזר לקביעת סדר העדיפויות
-  const PRIORITY_WEIGHT = { high: 1, medium: 2, low: 3 };
+
+  const q = search.trim().toLowerCase();
 
   const filteredIssues = issues
-  .filter(i => 
-    i.title.toLowerCase().includes(search.toLowerCase()) || 
-    i.description.toLowerCase().includes(search.toLowerCase())
-  )
-  .sort((a, b) => {
-    // מיון לפי המשקלים שהגדרנו למעלה
-    return (PRIORITY_WEIGHT[a.priority as keyof typeof PRIORITY_WEIGHT] || 99) - 
-           (PRIORITY_WEIGHT[b.priority as keyof typeof PRIORITY_WEIGHT] || 99);
-  });
+    .filter((issue) => {
+      if (q.length < 2) return true;
+
+      return (
+        issue.title.toLowerCase().includes(q) ||
+        issue.description.toLowerCase().includes(q) ||
+        issue.assignee.toLowerCase().includes(q)
+      );
+    })
+    .sort(sortByPriority);
 
   return {
     columns,
@@ -126,7 +138,9 @@ export function useBoard() {
       openViewIssue: setViewingIssue,
       closeViewing: () => setViewingIssue(null),
       saveIssue: handleSaveIssue,
-      createColumn: (title: string) => createColumn(title, columns).then(res => setColumns(prev => [...prev, res])),
+      createColumn: handleCreateColumn,
+      deleteIssue:issueDelete.openDeleteDialog,
+      deleteColumn: columnDelete.openDeleteDialog,
     },
     issueDelete,
     columnDelete,

@@ -1,16 +1,13 @@
 import { Container, Box } from "@mui/material";
 import { DndContext } from "@dnd-kit/core";
-
 import BoardColumn from "./components/BoardColumn";
 import BoardDialogs from "./components/BoardDialogs";
 import BoardDragOverlay from "./components/BoardDragOverlay";
 import BoardHeader from "./components/BoardHeader";
 import { useBoard } from "./hooks/useBoard";
-// ייבוא הטיפוסים בצורה שתואמת להגדרות הפרויקט שלך
-import type { Column, Issue } from "./types";
+import type {Issue } from "./types";
 
 function App() {
-  // שליפה מסודרת של כל המשתנים מההוק - הוספתי את columnDelete
   const { 
     columns, 
     filteredIssues, 
@@ -36,16 +33,8 @@ function App() {
               onAddIssue={() => handlers.openIssueDialog(column.id)}
               onEditIssue={(issue: Issue) => handlers.openIssueDialog(column.id, issue)}
               
-              // פתרון שגיאת onDeleteIssue - שימוש בטיפוס Issue
-              onDeleteIssue={(issueId: string) => {
-                const issueToDelete = filteredIssues.find((i: Issue) => i.id === issueId);
-                if (issueToDelete) issueDelete.openDeleteDialog(issueToDelete);
-              }}
-
-              // פתרון שגיאת onDeleteColumn - שימוש בטיפוס Column
-              onDeleteColumn={(col: Column) => {
-                columnDelete.openDeleteDialog(col);
-              }}
+              onDeleteIssue={handlers.deleteIssue}
+              onDeleteColumn={handlers.deleteColumn}
               
               onViewIssue={handlers.openViewIssue}
             />

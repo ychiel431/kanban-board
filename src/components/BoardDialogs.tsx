@@ -13,6 +13,7 @@ interface BoardDialogsProps {
     editingIssue: Issue | null;
     selectedStatus: string;
     viewingIssue: Issue | null;
+
     
   };
   handlers: {
@@ -24,7 +25,6 @@ interface BoardDialogsProps {
   };
   issueDelete: UseDeleteEntityReturn<Issue>;
   columnDelete: UseDeleteEntityReturn<Column>;
-  // טיפוס מדויק במקום any
 }
 
 const BoardDialogs: React.FC<BoardDialogsProps> = ({ dialogs, handlers, issueDelete, columnDelete }) => {
@@ -38,6 +38,7 @@ const BoardDialogs: React.FC<BoardDialogsProps> = ({ dialogs, handlers, issueDel
         issue={dialogs.editingIssue || undefined}
         onClose={handlers.closeIssue}
         onSubmit={handlers.saveIssue}
+        
       />
 
       {/* דיאלוג הוספת עמודה */}
@@ -53,7 +54,8 @@ const BoardDialogs: React.FC<BoardDialogsProps> = ({ dialogs, handlers, issueDel
         onClose={issueDelete.closeDeleteDialog}
         onConfirm={issueDelete.confirmDelete}
         title="Delete Issue"
-        description={`Are you sure you want to delete "${issueDelete.entityToDelete?.title}"?`}
+        description={`Are you sure you want to delete "${issueDelete.entityToDelete?.title ?? ""}"?`}
+        isLoading={issueDelete.isDeleting}
       />
 
       <ConfirmDeleteDialog
@@ -61,7 +63,8 @@ const BoardDialogs: React.FC<BoardDialogsProps> = ({ dialogs, handlers, issueDel
         onClose={columnDelete.closeDeleteDialog}
         onConfirm={columnDelete.confirmDelete}
         title="Delete Column"
-        description={`Are you sure you want to delete "${columnDelete.entityToDelete?.title}"?`}
+        description={`Are you sure you want to delete "${columnDelete.entityToDelete?.title  ?? ""}"?`}
+        isLoading={columnDelete.isDeleting}
       />
 
       {/* דיאלוג צפייה בפרטים */}

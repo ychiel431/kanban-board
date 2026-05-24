@@ -10,7 +10,7 @@ interface BoardColumnProps {
   column: Column;
   issues: Issue[];
   onAddIssue: (columnId: string) => void;
-  onDeleteIssue: (issueId: string) => void;
+  onDeleteIssue: (issue: Issue) => void;
   onEditIssue: (issue: Issue) => void;
   onViewIssue: (issue: Issue) => void;
   onDeleteColumn: (column: Column) => void;

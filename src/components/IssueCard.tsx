@@ -8,7 +8,7 @@ import type { Issue } from "../types";
 
 interface IssueCardProps {
   issue: Issue;
-  onDelete: (issueId: string) => void;
+  onDelete: (issue: Issue) => void;
   onEdit: (issue: Issue) => void;
   onView: (issue: Issue) => void;
 }
@@ -175,7 +175,7 @@ function IssueCard({ issue, onDelete, onEdit, onView }: IssueCardProps) {
         {/* 🗑️ Delete */}
         <IconButton
           size="small"
-          onClick={() => onDelete(issue.id)}
+          onClick={() => onDelete(issue)}
           sx={{
             width: 24,
             height: 24,

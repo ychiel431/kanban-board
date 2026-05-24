@@ -14,6 +14,7 @@ interface ConfirmDeleteDialogProps {
   confirmText?: string;
   onClose: () => void;
   onConfirm: () => void;
+  isLoading?: boolean;
 }
 
 function ConfirmDeleteDialog({
@@ -23,6 +24,7 @@ function ConfirmDeleteDialog({
   confirmText = "Delete",
   onClose,
   onConfirm,
+  isLoading = false
 }: ConfirmDeleteDialogProps) {
   return (
     <Dialog open={open} onClose={onClose}>
@@ -34,8 +36,8 @@ function ConfirmDeleteDialog({
 
       <DialogActions>
         <Button onClick={onClose}>Cancel</Button>
-        <Button color="error" variant="contained" onClick={onConfirm}>
-          {confirmText}
+        <Button color="error" variant="contained" onClick={onConfirm} disabled={isLoading}>
+          {isLoading ? "Deleting..." : confirmText}
         </Button>
       </DialogActions>
     </Dialog>

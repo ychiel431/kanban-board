@@ -128,7 +128,7 @@
       "title": "Improve add column dialog",
       "description": "Add validation, prevent duplicate column titles, and improve the dialog copy.",
       "assignee": "Shira",
-      "status": "col-progress",
+      "status": "col-code-review",
       "priority": "low",
       "createdAt": "2026-05-04T09:50:00.000Z"
     },
@@ -146,7 +146,7 @@
       "title": "Review TypeScript models",
       "description": "Check that Issue, Column, CreateIssueInput, and UpdateIssueInput match the data model.",
       "assignee": "Yechiel",
-      "status": "col-code-review",
+      "status": "col-progress",
       "priority": "medium",
       "createdAt": "2026-05-04T10:10:00.000Z"
     },
